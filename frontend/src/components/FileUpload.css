@@ -1,0 +1,50 @@
+/* FileUpload.css */
+.file-upload {
+    background-color: white;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    max-width: 600px;
+    margin: 20px auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .file-upload h1 {
+    text-align: center;
+    color: #333;
+  }
+  
+  .file-upload form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .file-upload input[type="file"] {
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+  }
+  
+  .file-upload button {
+    padding: 10px;
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .file-upload button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+  
+  .file-upload button:hover {
+    background-color: #218838;
+  }
+  
