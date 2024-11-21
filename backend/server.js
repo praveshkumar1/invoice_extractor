@@ -35,75 +35,75 @@ app.post("/process-file", upload.single("file"), async (req, res) => {
     );
 
     // Generate content using the uploaded file
-    // const model = genAI.getGenerativeModel({
-    //   model: "gemini-1.5-flash",
-    // });
+    const model = genAI.getGenerativeModel({
+      model: "gemini-1.5-flash",
+    });
 
-    // const result = await model.generateContent([
-    //   {
-    //     fileData: {
-    //       mimeType: uploadResponse.file.mimeType,
-    //       fileUri: uploadResponse.file.uri,
-    //     },
-    //   },
-    //   { text: "Extract invoice data as JSON including invoices, products, and customers." },
-    // ]);
+    const result = await model.generateContent([
+      {
+        fileData: {
+          mimeType: uploadResponse.file.mimeType,
+          fileUri: uploadResponse.file.uri,
+        },
+      },
+      { text: "Extract invoice data as JSON including invoices, products, and customers." },
+    ]);
 
-    // // Attempt to parse the response as JSON
-    // const jsonStart = result.response.text().indexOf("{");
-    // const jsonEnd = result.response.text().lastIndexOf("}");
-    // const extractedJSON = result.response.text().slice(jsonStart, jsonEnd + 1);
+    // Attempt to parse the response as JSON
+    const jsonStart = result.response.text().indexOf("{");
+    const jsonEnd = result.response.text().lastIndexOf("}");
+    const extractedJSON = result.response.text().slice(jsonStart, jsonEnd + 1);
 
-    // const data = JSON.parse(extractedJSON);
-    const sampleData = {
-        invoice: {
-          number: 'INV-148CZS',
-          date: '12 Nov 2024',
-          supplier: {
-            name: 'Elnvoices',
-            gst: '29AABCT1332L000',
-            address: 'H/No 1 59/9, M.S.R.Y Nilayam, 4th floor, Masjid Banda, Kondapur, Rangareddy, H-derabad Bangalore South, KARNATAKA, 560030',
-            mobile: '+91 9999999999',
-            email: 'Swipe@gmail.com'
-          },
-          customer: {
-            name: 'NextSpeed Technologies Pvt Ltd',
-            gst: 'ABCDE1234567890',
-            phone: '9999999994'
-          },
-          consignee: { name: 'Shounak' },
-          place_of_supply: '29-KARNATAKA',
-          items: [
-            { name: "GEMS CHOCLATE POUCH", quantity: 1000, unitPrice: 4.76, tax: 238.1, priceWithTax: 5000 },
-            { name: "TREAT BKS CASE 80PKT", quantity: 50, unitPrice: 535.71, tax: 3214.29, priceWithTax: 30000 },
-            { name: "NUTRI CHOICE BKS CASE", quantity: 25, unitPrice: 666.67, tax: 833.33, priceWithTax: 17500 },
-            { name: "MILK BIKIS CLASSIC CASE 120PK", quantity: 20, unitPrice: 809.52, tax: 809.52, priceWithTax: 17000 }
-          ],
-          total_items: 4,
-          total_quantity: 1095,
-          making_charges: 123456,
-          debit_card_charges: 12345,
-          shipping_charges: 180,
-          taxable_amount: 200385.76,
-          cgst_2_5: 940.48,
-          sgst_2_5: 940.48,
-          cgst_6: 1607.14,
-          sgst_6: 1607.14,
-          total: 205481,
-          amount_payable: 205481,
-          total_amount_due: 205481,
-          amount_in_words: 'INR Two Lakh, Five Thousand, Four Hundred And Eighty-One Rupees Only',
-          bank_details: {
-            bank: 'Example Bank',
-            account_number: '1234567890',
-            ifsc_code: 'IFSC0001234',
-            branch: 'Main Branch',
-            beneficiary_name: 'Vishnu'
-          }
-        }
-      };
+    const data = JSON.parse(extractedJSON);
+    // const sampleData = {
+    //     invoice: {
+    //       number: 'INV-148CZS',
+    //       date: '12 Nov 2024',
+    //       supplier: {
+    //         name: 'Elnvoices',
+    //         gst: '29AABCT1332L000',
+    //         address: 'H/No 1 59/9, M.S.R.Y Nilayam, 4th floor, Masjid Banda, Kondapur, Rangareddy, H-derabad Bangalore South, KARNATAKA, 560030',
+    //         mobile: '+91 9999999999',
+    //         email: 'Swipe@gmail.com'
+    //       },
+    //       customer: {
+    //         name: 'NextSpeed Technologies Pvt Ltd',
+    //         gst: 'ABCDE1234567890',
+    //         phone: '9999999994'
+    //       },
+    //       consignee: { name: 'Shounak' },
+    //       place_of_supply: '29-KARNATAKA',
+    //       items: [
+    //         { name: "GEMS CHOCLATE POUCH", quantity: 1000, unitPrice: 4.76, tax: 238.1, priceWithTax: 5000 },
+    //         { name: "TREAT BKS CASE 80PKT", quantity: 50, unitPrice: 535.71, tax: 3214.29, priceWithTax: 30000 },
+    //         { name: "NUTRI CHOICE BKS CASE", quantity: 25, unitPrice: 666.67, tax: 833.33, priceWithTax: 17500 },
+    //         { name: "MILK BIKIS CLASSIC CASE 120PK", quantity: 20, unitPrice: 809.52, tax: 809.52, priceWithTax: 17000 }
+    //       ],
+    //       total_items: 4,
+    //       total_quantity: 1095,
+    //       making_charges: 123456,
+    //       debit_card_charges: 12345,
+    //       shipping_charges: 180,
+    //       taxable_amount: 200385.76,
+    //       cgst_2_5: 940.48,
+    //       sgst_2_5: 940.48,
+    //       cgst_6: 1607.14,
+    //       sgst_6: 1607.14,
+    //       total: 205481,
+    //       amount_payable: 205481,
+    //       total_amount_due: 205481,
+    //       amount_in_words: 'INR Two Lakh, Five Thousand, Four Hundred And Eighty-One Rupees Only',
+    //       bank_details: {
+    //         bank: 'Example Bank',
+    //         account_number: '1234567890',
+    //         ifsc_code: 'IFSC0001234',
+    //         branch: 'Main Branch',
+    //         beneficiary_name: 'Vishnu'
+    //       }
+    //     }
+    //   };
     // Send the parsed JSON data back to the frontend
-    res.json(sampleData);
+    res.json(data);
     //console.log('successfully got the data ',data)
   } catch (error) {
     console.error("Error:", error.message);
