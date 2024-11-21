@@ -6,7 +6,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const { GoogleAIFileManager } = require("@google/generative-ai/server");
 
 const app = express();
-const upload = multer({ dest: "uploads/" }); // Temporary upload folder
+const upload = multer({ dest: '/tmp/uploads/' }); // Temporary upload folder
 const PORT = process.env.PORT || 5000;
 
 // Enable CORS for frontend communication
