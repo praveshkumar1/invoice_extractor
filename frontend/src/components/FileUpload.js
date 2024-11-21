@@ -37,6 +37,7 @@ const FileUpload = () => {
       }
 
       const result = await response.json();
+      console.log('this is the result ', result);
       dispatch(setFileData(result.invoice)); // Store invoice data in Redux store
       dispatch(setFileUploadStatus('success'));
     } catch (error) {
