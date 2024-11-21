@@ -15,7 +15,7 @@ app.use(cors());
 // Initialize GoogleGenerativeAI and GoogleAIFileManager
 const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 const fileManager = new GoogleAIFileManager(process.env.API_KEY);
-app.use('/',async(req,res)=>{
+app.get('/',async(req,res)=>{
   res.send('hey I am up ... working');
 })
 // Route to handle file upload and processing
