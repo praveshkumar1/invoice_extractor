@@ -27,7 +27,7 @@ const FileUpload = () => {
     formData.append('file', file);
 
     try {
-      const response = await fetch('http://localhost:5000/process-file', {
+      const response = await fetch('invoice-extractor-phi.vercel.app/process-file', {
         method: 'POST',
         body: formData,
       });
